@@ -286,22 +286,140 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
 .foot-logo-text span{color:var(--accent)}
 
 /* ════════════════════════════════════════════
-   RESPONSIVE
+   HAMBURGER MENU
+════════════════════════════════════════════ */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem;background:none;border:none;z-index:200}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:transform .3s,opacity .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(12,15,29,.97);backdrop-filter:blur(20px);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Syne',sans-serif;font-weight:700;font-size:1.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;transition:color .2s}
+.mobile-menu a:hover,.mobile-menu a:active{color:var(--white)}
+.mobile-menu .m-cta{background:var(--purple);color:#fff!important;padding:.8rem 2rem;border-radius:2rem;font-size:1rem!important;margin-top:.5rem}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE — TABLET (≤1100px)
 ════════════════════════════════════════════ */
 @media(max-width:1100px){
   .services-grid{grid-template-columns:repeat(2,1fr)}
+  .hero{gap:2.5rem;padding:7rem 2rem 4rem}
+  .feat-inner{gap:3rem}
 }
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE — MOBILE (≤768px)
+════════════════════════════════════════════ */
+@media(max-width:768px){
+  /* hide custom cursor on touch */
+  .cur,.cur-ring{display:none}
+
+  /* NAV */
+  nav{padding:.9rem 1.2rem}
   .nav-links{display:none}
-  .hero{grid-template-columns:1fr;padding:5.5rem 1.5rem 3rem}
+  .nav-cta{display:none}
+  .hamburger{display:flex}
+
+  /* HERO */
+  .hero{
+    grid-template-columns:1fr;
+    min-height:auto;
+    padding:5.5rem 1.2rem 3rem;
+    gap:2rem;
+  }
   .hero-cards{display:none}
-  .feat-inner,.proj-card.span2{grid-template-columns:1fr}
-  .proj-grid{grid-template-columns:1fr}
-  .proj-card.span2{grid-column:span 1}
-  .proc-grid,.testi-grid,.services-grid{grid-template-columns:1fr}
-  section{padding:4rem 1.5rem}
-  footer{padding:1.5rem}
+  .hero h1{
+    font-size:clamp(2.6rem,12vw,4rem);
+    letter-spacing:-.03em;
+    margin-bottom:1.2rem;
+  }
+  .hero-sub{font-size:.92rem;line-height:1.7;margin-bottom:1.5rem}
+  .hero-btns{flex-direction:column;gap:.75rem}
+  .btn-fill,.btn-outline{width:100%;justify-content:center;padding:.9rem 1.5rem;font-size:.9rem}
+  .badge{font-size:.7rem;padding:.3rem .85rem}
+  /* show mini stats instead of cards */
+  .hero-stats-mini{
+    display:grid!important;
+    grid-template-columns:repeat(2,1fr);
+    gap:.75rem;
+    margin-top:2rem;
+  }
+  .hstat{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:1rem;
+    padding:1rem;
+    text-align:center;
+  }
+  .hstat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.8rem;line-height:1}
+  .hstat-lbl{font-size:.72rem;color:var(--muted);margin-top:.25rem}
+
+  /* TICKER */
+  .ticker-strip{padding:.8rem 0}
+  .ticker-item{font-size:.75rem}
+
+  /* SECTIONS */
+  section{padding:3.5rem 1.2rem}
+  .section-title{font-size:clamp(1.6rem,6vw,2.2rem)}
+  .section-sub{font-size:.88rem}
+
+  /* SERVICES */
+  .services-grid{grid-template-columns:1fr;gap:1rem;margin-top:2rem}
+  .svc{padding:1.5rem}
+  .svc-n{font-size:2.5rem}
+
+  /* FEATURED */
+  .feat-inner{grid-template-columns:1fr;gap:2rem}
+  .feat-title{font-size:clamp(1.5rem,6vw,2rem)}
+  .feat-desc{font-size:.88rem}
+  .feat-metrics{grid-template-columns:repeat(3,1fr);gap:.6rem}
+  .fmet{padding:.9rem .6rem}
+  .fmet-num{font-size:1.4rem}
+  .fmet-lbl{font-size:.65rem}
+  .dash-mock{padding:1rem}
+  .btn-fill{width:100%;justify-content:center}
+
+  /* PROJECTS */
+  .proj-grid{grid-template-columns:1fr;gap:1rem}
+  .proj-card.span2{grid-column:span 1;grid-template-columns:1fr!important;display:flex!important;flex-direction:column}
+  .proj-visual{height:180px}
+  .proj-info{padding:1.2rem}
+  .proj-title{font-size:1rem}
+  .proj-desc{font-size:.82rem}
+  .proj-header{flex-direction:column;align-items:flex-start;gap:.75rem;margin-bottom:2rem}
+
+  /* PROCESS */
+  .proc-grid{grid-template-columns:1fr;gap:1rem;margin-top:2rem}
+  .proc-card{padding:1.4rem}
+
+  /* TESTIMONIALS */
+  .testi-grid{grid-template-columns:1fr;gap:1rem;margin-top:2rem}
+  .testi{padding:1.4rem}
+  .testi-text{font-size:.84rem}
+
+  /* CTA */
+  .cta-sec{padding:4rem 1.2rem}
+  .cta-sec .section-title{font-size:clamp(1.5rem,6vw,2rem)}
+  .cta-desc{font-size:.88rem}
+  .btn-cta{width:100%;justify-content:center;padding:.9rem 1.5rem}
+  .contact-links{flex-direction:column;align-items:center;gap:1rem}
+
+  /* FOOTER */
+  footer{padding:1.5rem 1.2rem;flex-direction:column;align-items:center;text-align:center;gap:.75rem}
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE — SMALL PHONES (≤400px)
+════════════════════════════════════════════ */
+@media(max-width:400px){
+  nav{padding:.8rem 1rem}
+  .hero{padding:5rem 1rem 2.5rem}
+  section{padding:3rem 1rem}
+  .hero h1{font-size:clamp(2.2rem,10vw,3rem)}
+  .feat-metrics{grid-template-columns:1fr}
+  .fmet{padding:.8rem}
+  .hero-stats-mini{grid-template-columns:repeat(2,1fr)}
 }
 </style>
 </head>
@@ -337,7 +455,20 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
     <li><a href="#contact">Contacto</a></li>
   </ul>
   <a href="mailto:Jamaristadiaz77@gmail.com" class="nav-cta">Trabajemos juntos →</a>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="m-link">Servicios</a>
+  <a href="#featured" class="m-link">Proyecto</a>
+  <a href="#projects" class="m-link">Portfolio</a>
+  <a href="#process" class="m-link">Proceso</a>
+  <a href="#contact" class="m-link">Contacto</a>
+  <a href="mailto:Jamaristadiaz77@gmail.com" class="m-cta m-link">Trabajemos juntos →</a>
+</div>
 
 <!-- ════ HERO ════ -->
 <section class="hero">
@@ -356,6 +487,25 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
     <div class="hero-btns">
       <a href="#featured" class="btn-fill">Ver proyecto destacado →</a>
       <a href="#contact" class="btn-outline">Contactar</a>
+    </div>
+    <!-- Mini stats shown only on mobile -->
+    <div class="hero-stats-mini" style="display:none">
+      <div class="hstat">
+        <div class="hstat-num" style="color:#00D4FF">30+</div>
+        <div class="hstat-lbl">Dashboards</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num" style="color:#7B2FFF">50+</div>
+        <div class="hstat-lbl">Proyectos diseño</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num" style="color:#00E5A0">15+</div>
+        <div class="hstat-lbl">Sitios web</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num" style="color:#FF6B2B">4</div>
+        <div class="hstat-lbl">Especialidades</div>
+      </div>
     </div>
   </div>
   <div class="hero-cards">
@@ -767,7 +917,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
     <span class="section-label" style="justify-content:center;display:flex">// Contacto</span>
     <h2 class="section-title">¿Tienes un proyecto en mente?</h2>
     <p class="cta-desc">Respondo en menos de 2 horas. Cuéntame qué necesitas y encontramos la mejor solución juntos.</p>
-    <a href="mailto:Jamaristadiaz77@gmail.com" class="btn-cta">Enviar mensaje →</a>
+    <a href="/cdn-cgi/l/email-protection#7d371c101c0f140e091c19141c074a4a3d1a101c1411531e1210" class="btn-cta">Enviar mensaje →</a>
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/jamarista77" target="_blank" rel="noopener" class="clink">
         <span class="clink-icon">💼</span> LinkedIn
@@ -775,8 +925,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
       <a href="https://upwork.com/fl/johanderamarista" target="_blank" rel="noopener" class="clink">
         <span class="clink-icon">🔗</span> Upwork
       </a>
-      <a href="mailto:Jamaristadiaz77@gmail.com" class="clink">
-        <span class="clink-icon">📧</span> Jamaristadiaz77@gmail.com
+      <a href="/cdn-cgi/l/email-protection#367c575b57445f454257525f574c010176515b575f5a1855595b" class="clink">
+        <span class="clink-icon">📧</span> <span class="__cf_email__" data-cfemail="713b101c1003180205101518100b464631161c10181d5f121e1c">[email&#160;protected]</span>
       </a>
       <a href="https://wa.me/584121649600" target="_blank" rel="noopener" class="clink">
         <span class="clink-icon">💬</span> WhatsApp +58 412 164 9600
@@ -796,19 +946,39 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
 </footer>
 
 <script>
-/* ── CURSOR ── */
+/* ── CURSOR (desktop only) ── */
 const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-(function loop(){
-  cur.style.left=mx+'px';cur.style.top=my+'px';
-  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(loop);
-})();
-document.querySelectorAll('a,button,.svc,.proj-card,.proc-card,.testi,.hcard').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';ring.style.width='50px';ring.style.height='50px';ring.style.opacity='.2'});
-  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.width='32px';ring.style.height='32px';ring.style.opacity='.4'});
+const isTouch=('ontouchstart' in window);
+if(!isTouch){
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+  (function loop(){
+    cur.style.left=mx+'px';cur.style.top=my+'px';
+    rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+    requestAnimationFrame(loop);
+  })();
+  document.querySelectorAll('a,button,.svc,.proj-card,.proc-card,.testi,.hcard').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';ring.style.width='50px';ring.style.height='50px';ring.style.opacity='.2'});
+    el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.width='32px';ring.style.height='32px';ring.style.opacity='.4'});
+  });
+}
+
+/* ── HAMBURGER ── */
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+});
+// close menu when link clicked
+document.querySelectorAll('.m-link').forEach(link=>{
+  link.addEventListener('click',()=>{
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow='';
+  });
 });
 
 /* ── SCROLL REVEAL ── */
