@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Johander Amarista — Especialista en Datos, Diseño Gráfico & UX/UI y Desarrollo Web. DataCraft Studio.">
+<meta name="author" content="Johander Amarista">
+<title>DataCraft Studio · Johander Amarista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════════════════
+   VARIABLES & RESET
+════════════════════════════════════════════ */
+:root{
+  --bg:#0C0F1D;
+  --bg2:#111526;
+  --cream:#F4F0EA;
+  --white:#FFFFFF;
+  --accent:#00D4FF;
+  --purple:#7B2FFF;
+  --green:#00E5A0;
+  --orange:#FF6B2B;
+  --muted:#8892A4;
+  --border:rgba(255,255,255,0.07);
+  --card:rgba(255,255,255,0.04);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* ════════════════════════════════════════════
+   SCROLLBAR
+════════════════════════════════════════════ */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:2px}
+
+/* ════════════════════════════════════════════
+   CURSOR
+════════════════════════════════════════════ */
+.cur{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s,width .2s,height .2s;mix-blend-mode:screen}
+.cur-ring{position:fixed;width:32px;height:32px;border:1.5px solid var(--accent);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4;transition:width .3s,height .3s,opacity .3s}
+
+/* ════════════════════════════════════════════
+   NAV
+════════════════════════════════════════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;background:rgba(12,15,29,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.4)}
+.logo{display:flex;align-items:center;gap:.6rem}
+.logo svg{width:34px;height:34px;flex-shrink:0}
+.logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;letter-spacing:-.01em}
+.logo-text span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.8rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--purple);color:#fff;padding:.55rem 1.3rem;border-radius:2rem;font-size:.82rem;font-weight:600;transition:background .2s,transform .15s}
+.nav-cta:hover{background:#6020e0;transform:translateY(-1px)}
+
+/* ════════════════════════════════════════════
+   HERO
+════════════════════════════════════════════ */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 3rem 4rem;gap:4rem;position:relative;overflow:hidden}
+/* animated background */
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 80% 50%,rgba(123,47,255,.18) 0%,transparent 70%)}
+.hero-bg::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:48px 48px}
+.floating-orb{position:absolute;border-radius:50%;filter:blur(80px);animation:float 8s ease-in-out infinite alternate}
+.orb1{width:400px;height:400px;background:rgba(0,212,255,.08);top:-100px;right:-100px}
+.orb2{width:300px;height:300px;background:rgba(123,47,255,.12);bottom:-50px;right:20%;animation-delay:-3s}
+@keyframes float{from{transform:translateY(0) scale(1)}to{transform:translateY(-30px) scale(1.05)}}
+.hero-content{position:relative;z-index:1}
+.badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);border-radius:2rem;padding:.35rem 1rem;font-size:.74rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;animation:fadeUp .8s ease both}
+.badge .pulse{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulseAnim 1.5s ease infinite}
+@keyframes pulseAnim{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(3rem,5vw,5.5rem);line-height:.95;letter-spacing:-.04em;margin-bottom:1.5rem;animation:fadeUp .8s .08s ease both}
+.hero h1 .c1{color:var(--accent);display:block}
+.hero h1 .c2{color:var(--purple);display:block}
+.hero-sub{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:440px;margin-bottom:1.8rem;animation:fadeUp .8s .16s ease both}
+.hero-sub strong{color:var(--white);font-weight:500}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s .24s ease both}
+.btn-fill{display:inline-flex;align-items:center;gap:.5rem;background:var(--purple);color:#fff;padding:.8rem 1.8rem;border-radius:2rem;font-weight:600;font-size:.9rem;transition:transform .15s,box-shadow .2s;box-shadow:0 4px 24px rgba(123,47,255,.4)}
+.btn-fill:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(123,47,255,.5)}
+.btn-outline{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid var(--border);color:var(--white);padding:.8rem 1.8rem;border-radius:2rem;font-weight:500;font-size:.9rem;transition:all .2s}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Hero right — stat cards */
+.hero-cards{position:relative;z-index:1;animation:fadeUp .9s .2s ease both;display:flex;flex-direction:column;gap:1rem}
+.hero-cards-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.hcard{background:var(--card);border:1px solid var(--border);border-radius:1.2rem;padding:1.4rem;backdrop-filter:blur(10px);transition:transform .2s,box-shadow .2s}
+.hcard:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.hcard.wide{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.hcard-icon{font-size:1.5rem;margin-bottom:.5rem}
+.hcard-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;line-height:1}
+.hcard-lbl{font-size:.75rem;color:var(--muted);margin-top:.25rem}
+.badge-list{display:flex;flex-direction:column;gap:.4rem}
+.tbadge{padding:.28rem .85rem;border-radius:1rem;font-size:.73rem;font-weight:500;border:1px solid rgba(0,212,255,.2);background:rgba(0,212,255,.08);color:var(--accent)}
+
+/* ════════════════════════════════════════════
+   TICKER
+════════════════════════════════════════════ */
+.ticker-strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 0;overflow:hidden}
+.ticker-inner{display:flex;gap:2.5rem;animation:ticker 22s linear infinite;white-space:nowrap}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{display:inline-flex;align-items:center;gap:.6rem;font-size:.8rem;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+.ticker-dot{color:var(--accent);font-size:.7rem}
+
+/* ════════════════════════════════════════════
+   SECTIONS SHARED
+════════════════════════════════════════════ */
+section{padding:6rem 3rem;position:relative}
+.section-label{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem;display:block}
+.section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,3vw,2.8rem);letter-spacing:-.03em;line-height:1.05;margin-bottom:.9rem}
+.section-sub{color:var(--muted);font-size:.94rem;line-height:1.75;max-width:500px}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ════════════════════════════════════════════
+   SERVICES — ALL DARK
+════════════════════════════════════════════ */
+.services{background:var(--bg2)}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3rem}
+.svc{background:var(--card);border:1px solid var(--border);border-radius:1.4rem;padding:2rem;transition:transform .25s,box-shadow .25s,border-color .25s;cursor:default;position:relative;overflow:hidden}
+.svc::after{content:'';position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity .3s;background:radial-gradient(ellipse at 30% 30%,var(--glow,.5,.5) 0%,transparent 60%)}
+.svc:hover{transform:translateY(-6px);box-shadow:0 16px 50px rgba(0,0,0,.5);border-color:rgba(255,255,255,.13)}
+.svc-n{font-family:'Syne',sans-serif;font-weight:800;font-size:3rem;color:rgba(255,255,255,.04);line-height:1;margin-bottom:.8rem}
+.svc-icon{font-size:1.7rem;margin-bottom:.8rem}
+.svc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem;margin-bottom:.6rem;color:var(--white)}
+.svc-desc{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem}
+.svc-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.stag{padding:.2rem .65rem;border-radius:1rem;font-size:.7rem;font-weight:600;background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.08)}
+
+/* ════════════════════════════════════════════
+   FEATURED PROJECT
+════════════════════════════════════════════ */
+.featured{background:var(--bg)}
+.feat-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.feat-pill{display:inline-flex;align-items:center;gap:.5rem;background:rgba(123,47,255,.2);border:1px solid rgba(123,47,255,.4);color:var(--purple);padding:.3rem 1rem;border-radius:2rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.2rem}
+.feat-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.7rem,2.8vw,2.5rem);line-height:1.06;letter-spacing:-.03em;margin-bottom:1.2rem}
+.feat-desc{color:var(--muted);font-size:.92rem;line-height:1.8;margin-bottom:1.8rem}
+.feat-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.8rem}
+.fmet{background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:1.2rem;text-align:center}
+.fmet-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;color:var(--accent)}
+.fmet-lbl{font-size:.7rem;color:var(--muted);margin-top:.25rem;line-height:1.4}
+.feat-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.8rem}
+.ftag{padding:.28rem .8rem;border-radius:1rem;font-size:.73rem;font-weight:500;background:rgba(0,212,255,.08);color:var(--accent);border:1px solid rgba(0,212,255,.2)}
+/* dashboard mock */
+.dash-mock{background:#070B1A;border-radius:1.5rem;padding:1.4rem;border:1px solid rgba(0,212,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.dm-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem}
+.dm-title{font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.06em}
+.dm-live{padding:.15rem .55rem;border-radius:1rem;background:rgba(0,229,160,.15);color:var(--green);font-size:.6rem;font-weight:700;border:1px solid rgba(0,229,160,.3)}
+.dm-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.7rem}
+.dm-kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:.6rem;padding:.55rem}
+.dm-kpi-v{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800;color:#fff}
+.dm-kpi-l{font-size:.48rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.dm-kpi-c{font-size:.55rem;font-weight:700;margin-top:3px}
+.dm-chart{background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.1);border-radius:.6rem;padding:.7rem;margin-bottom:.7rem}
+.dm-chart-lbl{font-size:.52rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem}
+.dm-bars{display:flex;align-items:flex-end;gap:4px;height:50px}
+.dm-b{flex:1;border-radius:2px 2px 0 0}
+.dm-status{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.dm-st{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:.6rem;padding:.55rem}
+.dm-st-lbl{font-size:.52rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.35rem}
+.dm-prog{height:4px;border-radius:2px;background:rgba(255,255,255,.08);overflow:hidden;margin-bottom:.25rem}
+.dm-prog-fill{height:100%;border-radius:2px}
+.dm-prog-txt{font-size:.58rem;font-weight:700}
+
+/* ════════════════════════════════════════════
+   PROJECTS GRID
+════════════════════════════════════════════ */
+.projects-sec{background:var(--bg2)}
+.proj-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:1.4rem;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.proj-card:hover{transform:translateY(-5px);box-shadow:0 16px 50px rgba(0,0,0,.5)}
+.proj-card.span2{grid-column:span 2;display:grid;grid-template-columns:1.2fr 1fr}
+.proj-visual{height:200px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.proj-card.span2 .proj-visual{height:auto;min-height:220px}
+.proj-info{padding:1.4rem 1.6rem}
+.proj-cat{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem}
+.proj-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.4rem;color:var(--white)}
+.proj-desc{font-size:.83rem;color:var(--muted);line-height:1.65;margin-bottom:.9rem}
+.proj-footer{display:flex;justify-content:space-between;align-items:center}
+.proj-stack{display:flex;gap:.3rem;flex-wrap:wrap}
+.pstag{padding:.18rem .55rem;border-radius:.4rem;font-size:.68rem;font-weight:600;background:rgba(255,255,255,.06);color:var(--muted)}
+.proj-arr{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.08);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:background .2s,transform .15s;flex-shrink:0}
+.proj-arr:hover{background:var(--purple);transform:scale(1.1)}
+
+/* ── Project visual mocks ── */
+.v-dash{background:#080C1A;width:100%;height:100%;padding:.9rem;display:flex;flex-direction:column;gap:.45rem}
+.v-krow{display:flex;gap:.4rem}
+.v-k{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:5px;padding:.4rem}
+.v-kn{font-family:'Syne',sans-serif;font-size:.82rem;color:#fff;font-weight:800}
+.v-kl{font-size:.45rem;color:rgba(255,255,255,.35);text-transform:uppercase}
+.v-brow{display:flex;gap:.4rem;flex:1}
+.v-bc{flex:2;background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.12);border-radius:5px;padding:.4rem;display:flex;align-items:flex-end;gap:3px}
+.v-bv{flex:1;border-radius:2px 2px 0 0}
+.v-dc{flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:5px;display:flex;align-items:center;justify-content:center}
+.v-web{background:#0F1117;width:100%;height:100%;display:flex;flex-direction:column}
+.v-nav{height:24px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;padding:0 .6rem;gap:.4rem}
+.v-nav-logo{width:32px;height:5px;border-radius:2px;background:var(--white)}
+.v-nav-lk{display:flex;gap:.3rem;margin-left:auto}
+.v-nav-l{width:16px;height:4px;border-radius:2px;background:rgba(255,255,255,.2)}
+.v-nav-cta{width:24px;height:10px;border-radius:5px;background:var(--purple)}
+.v-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;padding:1rem;background:radial-gradient(ellipse at 50% 50%,rgba(123,47,255,.12) 0%,transparent 70%)}
+.v-brand{background:#0A0A14;width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;gap:.45rem;padding:.8rem}
+.v-logo-box{background:rgba(255,255,255,.04);border-radius:7px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.07)}
+.v-logo-txt{font-family:'Syne',sans-serif;font-weight:800;font-size:.8rem;color:#fff}
+.v-pal{display:flex;flex-direction:column;gap:2px;padding:.4rem;background:rgba(255,255,255,.04);border-radius:7px}
+.v-sw{flex:1;border-radius:3px}
+.v-typebox{background:rgba(255,255,255,.04);border-radius:7px;padding:.4rem;display:flex;flex-direction:column;gap:3px;justify-content:center}
+.v-tln{height:4px;border-radius:2px;background:rgba(255,255,255,.3)}
+.v-ux{background:#EDE8E0;width:100%;height:100%;padding:.65rem;display:flex;flex-direction:column;gap:.4rem}
+.v-ux-body{display:flex;gap:.4rem;flex:1}
+.v-sb{width:34%;display:flex;flex-direction:column;gap:.3rem}
+.v-ni{height:16px;border-radius:4px;background:white;border:1px solid #ddd;display:flex;align-items:center;padding:0 .3rem;gap:.25rem}
+.v-ni.act{background:#111}
+.v-nd{width:4px;height:4px;border-radius:50%;background:#ccc}
+.v-ni.act .v-nd{background:#fff}
+.v-ma{flex:1;background:white;border-radius:5px;padding:.4rem;display:flex;flex-direction:column;gap:.3rem;border:1px solid #ddd}
+.v-f{height:13px;border-radius:3px;border:1px solid #e0e0e0;background:#f9f9f9}
+/* inventory mock */
+.v-inv{background:#080C1A;width:100%;height:100%;padding:.9rem;display:flex;flex-direction:column;gap:.45rem}
+.v-inv-krow{display:flex;gap:.4rem}
+.v-ik{flex:1;border-radius:5px;padding:.4rem;display:flex;flex-direction:column;gap:.2rem}
+.v-table{flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:5px;padding:.4rem;display:flex;flex-direction:column;gap:.25rem}
+.v-th{display:flex;gap:.4rem;padding-bottom:.2rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.v-th-c{flex:1;font-size:.42rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.05em}
+.v-tr{display:flex;gap:.4rem;align-items:center}
+.v-tc{flex:1;font-size:.5rem;color:rgba(255,255,255,.6)}
+.v-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+
+/* ════════════════════════════════════════════
+   PROCESS
+════════════════════════════════════════════ */
+.process-sec{background:var(--bg)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3rem}
+.proc-card{background:var(--card);border:1px solid var(--border);border-radius:1.3rem;padding:1.8rem;transition:transform .2s,background .2s}
+.proc-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.07)}
+.proc-n{font-family:'Syne',sans-serif;font-weight:800;font-size:3rem;color:rgba(255,255,255,.04);line-height:1;margin-bottom:.8rem}
+.proc-icon{font-size:1.4rem;margin-bottom:.6rem}
+.proc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.98rem;margin-bottom:.4rem;color:var(--white)}
+.proc-desc{font-size:.83rem;color:var(--muted);line-height:1.65}
+
+/* ════════════════════════════════════════════
+   TESTIMONIALS
+════════════════════════════════════════════ */
+.testi-sec{background:var(--bg2)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+.testi{background:var(--card);border:1px solid var(--border);border-radius:1.3rem;padding:1.8rem;transition:transform .2s}
+.testi:hover{transform:translateY(-3px)}
+.testi-stars{color:#F0A500;font-size:.85rem;letter-spacing:2px;margin-bottom:.9rem}
+.testi-text{font-size:.86rem;color:rgba(255,255,255,.75);line-height:1.75;margin-bottom:1.4rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:.65rem}
+.testi-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:.78rem;flex-shrink:0}
+.testi-name{font-weight:600;font-size:.84rem;color:var(--white)}
+.testi-role{font-size:.72rem;color:var(--muted)}
+
+/* ════════════════════════════════════════════
+   CTA / CONTACT
+════════════════════════════════════════════ */
+.cta-sec{background:linear-gradient(135deg,#1a0a3d 0%,#0c0f1d 50%,#001a2e 100%);text-align:center;padding:7rem 3rem;position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(123,47,255,.2) 0%,transparent 70%)}
+.cta-content{position:relative;z-index:1}
+.cta-sec .section-title{max-width:700px;margin:.5rem auto 1rem}
+.cta-desc{color:var(--muted);max-width:480px;margin:0 auto 2.5rem;font-size:.97rem;line-height:1.75}
+.btn-cta{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent);color:var(--bg);padding:.9rem 2.4rem;border-radius:2rem;font-weight:700;font-size:.95rem;transition:transform .15s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,212,255,.3)}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(0,212,255,.45)}
+.contact-links{display:flex;gap:1.5rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+.clink{color:rgba(255,255,255,.5);font-size:.86rem;font-weight:500;transition:color .2s;display:flex;align-items:center;gap:.4rem}
+.clink:hover{color:var(--white)}
+.clink-icon{font-size:1rem}
+
+/* ════════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════════ */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.78rem;color:var(--muted)}
+.foot-logo{display:flex;align-items:center;gap:.55rem}
+.foot-logo-text{font-family:'Syne',sans-serif;font-weight:800;color:var(--white);font-size:.9rem}
+.foot-logo-text span{color:var(--accent)}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:5.5rem 1.5rem 3rem}
+  .hero-cards{display:none}
+  .feat-inner,.proj-card.span2{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .proj-card.span2{grid-column:span 1}
+  .proc-grid,.testi-grid,.services-grid{grid-template-columns:1fr}
+  section{padding:4rem 1.5rem}
+  footer{padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
+
+<!-- ════ NAV ════ -->
+<nav id="nav">
+  <a href="#" class="logo">
+    <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="34" height="34" rx="7" fill="#111526"/>
+      <line x1="5" y1="17" x2="29" y2="17" stroke="#7B2FFF" stroke-width=".8" stroke-opacity=".5"/>
+      <line x1="17" y1="5" x2="17" y2="29" stroke="#7B2FFF" stroke-width=".8" stroke-opacity=".5"/>
+      <rect x="6" y="21" width="2.8" height="6.5" rx="1.4" fill="#00D4FF" opacity=".9"/>
+      <rect x="10.5" y="17" width="2.8" height="10.5" rx="1.4" fill="#7B2FFF" opacity=".9"/>
+      <rect x="15" y="13" width="2.8" height="14.5" rx="1.4" fill="#00D4FF"/>
+      <rect x="19.5" y="19" width="2.8" height="8.5" rx="1.4" fill="#7B2FFF" opacity=".7"/>
+      <rect x="24" y="15" width="2.8" height="12.5" rx="1.4" fill="#00E5A0"/>
+      <polyline points="7.4,21 11.9,17 16.4,13 20.9,19 25.4,15" stroke="#00E5A0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="7.4" cy="21" r="1.4" fill="#00E5A0"/>
+      <circle cx="25.4" cy="15" r="1.4" fill="#00E5A0"/>
+      <path d="M5.5 7.5 L8 5.5 L9 8.5 L6.5 10.5 Z" fill="#FF6B2B" opacity=".85"/>
+    </svg>
+    <span class="logo-text">DataCraft<span>.studio</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#featured">Proyecto</a></li>
+    <li><a href="#projects">Portfolio</a></li>
+    <li><a href="#process">Proceso</a></li>
+    <li><a href="#contact">Contacto</a></li>
+  </ul>
+  <a href="mailto:Jamaristadiaz77@gmail.com" class="nav-cta">Trabajemos juntos →</a>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="floating-orb orb1"></div>
+    <div class="floating-orb orb2"></div>
+  </div>
+  <div class="hero-content">
+    <div class="badge"><span class="pulse"></span>Disponible para proyectos</div>
+    <h1><span style="color:var(--white)">Diseño.</span><span class="c1">Datos.</span><span class="c2">Web.</span></h1>
+    <p class="hero-sub">
+      Soy <strong>Johander Amarista</strong> — especialista en <strong>Diseño Gráfico & UX/UI</strong>,
+      <strong>Visualización de Datos</strong> y <strong>Desarrollo Web</strong>. Transformo información
+      compleja en soluciones que impulsan negocios reales.
+    </p>
+    <div class="hero-btns">
+      <a href="#featured" class="btn-fill">Ver proyecto destacado →</a>
+      <a href="#contact" class="btn-outline">Contactar</a>
+    </div>
+  </div>
+  <div class="hero-cards">
+    <div class="hero-cards-row">
+      <div class="hcard">
+        <div class="hcard-icon">📊</div>
+        <div class="hcard-num" style="color:var(--accent)">30<small style="font-size:1.2rem">+</small></div>
+        <div class="hcard-lbl">Dashboards entregados</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon">🎨</div>
+        <div class="hcard-num" style="color:var(--purple)">50<small style="font-size:1.2rem">+</small></div>
+        <div class="hcard-lbl">Proyectos de diseño</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon">💻</div>
+        <div class="hcard-num" style="color:var(--green)">15<small style="font-size:1.2rem">+</small></div>
+        <div class="hcard-lbl">Sitios web creados</div>
+      </div>
+      <div class="hcard">
+        <div class="hcard-icon">⚡</div>
+        <div class="hcard-num" style="color:var(--orange)">4</div>
+        <div class="hcard-lbl">Especialidades</div>
+      </div>
+    </div>
+    <div class="hcard wide">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;color:var(--accent);margin-bottom:.25rem">Stack completo</div>
+        <div style="font-size:.75rem;color:var(--muted)">Herramientas & tecnologías</div>
+      </div>
+      <div class="badge-list">
+        <span class="tbadge">Power BI · DAX · SQL</span>
+        <span class="tbadge" style="border-color:rgba(123,47,255,.2);background:rgba(123,47,255,.08);color:var(--purple)">Figma · Illustrator · Photoshop</span>
+        <span class="tbadge" style="border-color:rgba(0,229,160,.2);background:rgba(0,229,160,.08);color:var(--green)">HTML · CSS · JavaScript</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ TICKER ════ -->
+<div class="ticker-strip">
+  <div class="ticker-inner">
+    <span class="ticker-item">Power BI <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Diseño Gráfico <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Tableau <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Figma <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Adobe Illustrator <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">HTML · CSS · JS <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">UX Research <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">DAX & SQL <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Automatización <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Branding <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">KPI Dashboards <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Power BI <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Diseño Gráfico <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Tableau <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Figma <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Adobe Illustrator <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">HTML · CSS · JS <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">UX Research <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">DAX & SQL <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Automatización <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">Branding <span class="ticker-dot">◆</span></span>
+    <span class="ticker-item">KPI Dashboards <span class="ticker-dot">◆</span></span>
+  </div>
+</div>
+
+<!-- ════ SERVICES ════ -->
+<section class="services" id="services">
+  <div class="reveal">
+    <span class="section-label">// Servicios</span>
+    <h2 class="section-title">Cuatro especialidades.<br>Un solo profesional.</h2>
+    <p class="section-sub">No necesitas cuatro equipos. Conecto diseño, datos y desarrollo en soluciones que realmente transforman negocios.</p>
+  </div>
+  <div class="services-grid">
+    <div class="svc reveal">
+      <div class="svc-n">01</div>
+      <div class="svc-icon">🎨</div>
+      <h3 class="svc-title">Diseño Gráfico</h3>
+      <p class="svc-desc">Identidades visuales, logotipos, piezas publicitarias y material corporativo que comunican con precisión y se recuerdan.</p>
+      <div class="svc-tags"><span class="stag">Illustrator</span><span class="stag">Photoshop</span><span class="stag">Branding</span><span class="stag">Logo</span></div>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-n">02</div>
+      <div class="svc-icon">📊</div>
+      <h3 class="svc-title">Visualización de Datos</h3>
+      <p class="svc-desc">Dashboards interactivos con KPIs automatizados y reportes que convierten datos en decisiones de negocio accionables.</p>
+      <div class="svc-tags"><span class="stag">Power BI</span><span class="stag">Tableau</span><span class="stag">DAX</span><span class="stag">SQL</span></div>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-n">03</div>
+      <div class="svc-icon">✏️</div>
+      <h3 class="svc-title">UX / UI Design</h3>
+      <p class="svc-desc">Interfaces centradas en el usuario. Wireframes y prototipos de alta fidelidad que simplifican la experiencia digital.</p>
+      <div class="svc-tags"><span class="stag">Figma</span><span class="stag">Adobe XD</span><span class="stag">Prototyping</span></div>
+    </div>
+    <div class="svc reveal">
+      <div class="svc-n">04</div>
+      <div class="svc-icon">💻</div>
+      <h3 class="svc-title">Desarrollo Web</h3>
+      <p class="svc-desc">Sitios web modernos y responsivos. Landing pages de alto impacto hasta plataformas con datos en tiempo real.</p>
+      <div class="svc-tags"><span class="stag">HTML/CSS</span><span class="stag">JavaScript</span><span class="stag">WordPress</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FEATURED PROJECT ════ -->
+<section class="featured" id="featured">
+  <div class="feat-inner">
+    <div class="reveal">
+      <div class="feat-pill">🏆 Proyecto Destacado</div>
+      <h2 class="feat-title">Sistema de Automatización Empresarial</h2>
+      <p class="feat-desc">Diseño e implementación de un ecosistema integral de automatización para empresas de cualquier sector. Conecta los departamentos internos entre sí, eliminando procesos manuales, reduciendo errores a cero y generando reportes automáticos en tiempo real para cada área de la organización.</p>
+      <div class="feat-metrics">
+        <div class="fmet"><div class="fmet-num">100%</div><div class="fmet-lbl">Flujo automatizado</div></div>
+        <div class="fmet"><div class="fmet-num">5+</div><div class="fmet-lbl">Departamentos integrados</div></div>
+        <div class="fmet"><div class="fmet-num">0</div><div class="fmet-lbl">Errores de cálculo manual</div></div>
+      </div>
+      <div class="feat-tags">
+        <span class="ftag">Power BI</span><span class="ftag">DAX Avanzado</span><span class="ftag">SQL Server</span>
+        <span class="ftag">Excel Automatizado</span><span class="ftag">Control de Nómina</span>
+        <span class="ftag">Gestión de Contratos</span><span class="ftag">Dashboards RRHH</span>
+      </div>
+      <a href="#contact" class="btn-fill">Solicitar proyecto similar →</a>
+    </div>
+    <div class="reveal">
+      <div class="dash-mock">
+        <div class="dm-bar">
+          <span class="dm-title">🏢 ENTERPRISE ADM — PANEL DE CONTROL</span>
+          <span class="dm-live">● EN VIVO</span>
+        </div>
+        <div class="dm-kpis">
+          <div class="dm-kpi"><div class="dm-kpi-v" style="color:var(--accent)">$248K</div><div class="dm-kpi-l">Nómina Total</div><div class="dm-kpi-c" style="color:var(--green)">✓ Procesada</div></div>
+          <div class="dm-kpi"><div class="dm-kpi-v">127</div><div class="dm-kpi-l">Empleados Activos</div><div class="dm-kpi-c" style="color:var(--green)">↑ 3 este mes</div></div>
+          <div class="dm-kpi"><div class="dm-kpi-v" style="color:var(--green)">98.4%</div><div class="dm-kpi-l">Pagos a Tiempo</div><div class="dm-kpi-c" style="color:#F0A500">▲ vs 87% antes</div></div>
+        </div>
+        <div class="dm-chart">
+          <div class="dm-chart-lbl">DISTRIBUCIÓN POR DEPARTAMENTO — MES ACTUAL</div>
+          <div class="dm-bars">
+            <div class="dm-b" style="height:45%;background:#0066FF;opacity:.8"></div>
+            <div class="dm-b" style="height:78%;background:#0066FF;opacity:.8"></div>
+            <div class="dm-b" style="height:58%;background:#0066FF;opacity:.8"></div>
+            <div class="dm-b" style="height:92%;background:var(--purple)"></div>
+            <div class="dm-b" style="height:66%;background:#0066FF;opacity:.8"></div>
+            <div class="dm-b" style="height:52%;background:#0066FF;opacity:.8"></div>
+            <div class="dm-b" style="height:82%;background:var(--green)"></div>
+          </div>
+        </div>
+        <div class="dm-status">
+          <div class="dm-st">
+            <div class="dm-st-lbl">ADM → PAGOS</div>
+            <div class="dm-prog"><div class="dm-prog-fill" style="width:96%;background:var(--green)"></div></div>
+            <div class="dm-prog-txt" style="color:var(--green)">96% completado</div>
+          </div>
+          <div class="dm-st">
+            <div class="dm-st-lbl">CONTRATOS ACTIVOS</div>
+            <div class="dm-prog"><div class="dm-prog-fill" style="width:100%;background:var(--accent)"></div></div>
+            <div class="dm-prog-txt" style="color:var(--accent)">44 activos · 0 vencidos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PROJECTS ════ -->
+<section class="projects-sec" id="projects">
+  <div class="proj-header reveal">
+    <div>
+      <span class="section-label">// Portfolio</span>
+      <h2 class="section-title">Más trabajo</h2>
+    </div>
+    <a href="#contact" class="btn-outline" style="font-size:.85rem">Hablemos de tu proyecto →</a>
+  </div>
+  <div class="proj-grid">
+
+    <!-- Dashboard -->
+    <div class="proj-card reveal">
+      <div class="proj-visual" style="background:#080C1A">
+        <div class="v-dash" style="width:100%;height:100%;padding:.9rem;display:flex;flex-direction:column;gap:.45rem">
+          <div class="v-krow">
+            <div class="v-k"><div class="v-kn" style="color:var(--accent)">$48K</div><div class="v-kl">Revenue</div></div>
+            <div class="v-k"><div class="v-kn">2,840</div><div class="v-kl">Users</div></div>
+            <div class="v-k"><div class="v-kn" style="color:var(--green)">3.7%</div><div class="v-kl">Conv.</div></div>
+          </div>
+          <div class="v-brow" style="flex:1">
+            <div class="v-bc">
+              <div class="v-bv" style="height:42%;background:#0066FF;opacity:.8"></div>
+              <div class="v-bv" style="height:68%;background:#0066FF;opacity:.8"></div>
+              <div class="v-bv" style="height:48%;background:#0066FF;opacity:.8"></div>
+              <div class="v-bv" style="height:82%;background:var(--purple)"></div>
+              <div class="v-bv" style="height:62%;background:#0066FF;opacity:.8"></div>
+              <div class="v-bv" style="height:90%;background:var(--accent)"></div>
+              <div class="v-bv" style="height:72%;background:#0066FF;opacity:.8"></div>
+            </div>
+            <div class="v-dc">
+              <svg width="44" height="44" viewBox="0 0 44 44">
+                <circle cx="22" cy="22" r="16" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="7"/>
+                <circle cx="22" cy="22" r="16" fill="none" stroke="#00D4FF" stroke-width="7" stroke-dasharray="60 41" stroke-dashoffset="0" stroke-linecap="round"/>
+                <circle cx="22" cy="22" r="16" fill="none" stroke="#7B2FFF" stroke-width="7" stroke-dasharray="30 71" stroke-dashoffset="-60" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <div class="proj-cat" style="color:var(--accent)">📊 Power BI Dashboard</div>
+        <h3 class="proj-title">Dashboard de Control de Marketing</h3>
+        <p class="proj-desc">KPIs en tiempo real, alertas de cumplimiento y análisis comparativo por campaña con clasificación automática.</p>
+        <div class="proj-footer">
+          <div class="proj-stack"><span class="pstag">Power BI</span><span class="pstag">DAX</span><span class="pstag">SQL</span></div>
+          <a href="#contact" class="proj-arr">↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Web -->
+    <div class="proj-card reveal">
+      <div class="proj-visual">
+        <div class="v-web" style="width:100%;height:100%">
+          <div class="v-nav">
+            <div class="v-nav-logo"></div>
+            <div class="v-nav-lk"><div class="v-nav-l"></div><div class="v-nav-l"></div><div class="v-nav-cta"></div></div>
+          </div>
+          <div class="v-main">
+            <div style="width:65%;height:9px;border-radius:4px;background:rgba(255,255,255,.7)"></div>
+            <div style="width:48%;height:7px;border-radius:3px;background:rgba(255,255,255,.35)"></div>
+            <div style="width:50px;height:13px;border-radius:6px;background:var(--purple)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <div class="proj-cat" style="color:var(--orange)">💻 Desarrollo Web</div>
+        <h3 class="proj-title">Landing Page de Alta Conversión</h3>
+        <p class="proj-desc">Sitio web de producto con diseño orientado a conversión, animaciones personalizadas y estructura SEO optimizada.</p>
+        <div class="proj-footer">
+          <div class="proj-stack"><span class="pstag">HTML/CSS</span><span class="pstag">JavaScript</span><span class="pstag">GSAP</span></div>
+          <a href="#contact" class="proj-arr">↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand -->
+    <div class="proj-card reveal">
+      <div class="proj-visual" style="background:#0A0A14">
+        <div class="v-brand" style="width:100%;height:100%">
+          <div class="v-logo-box"><div class="v-logo-txt">NEXUS™</div></div>
+          <div class="v-pal">
+            <div class="v-sw" style="background:var(--purple)"></div>
+            <div class="v-sw" style="background:var(--accent)"></div>
+            <div class="v-sw" style="background:var(--green)"></div>
+            <div class="v-sw" style="background:var(--orange)"></div>
+          </div>
+          <div class="v-typebox">
+            <div class="v-tln" style="width:80%;height:6px"></div>
+            <div class="v-tln" style="width:58%"></div>
+            <div class="v-tln" style="width:70%"></div>
+          </div>
+          <div style="background:rgba(255,255,255,.04);border-radius:7px;padding:.4rem;display:grid;grid-template-columns:1fr 1fr;gap:3px">
+            <div style="background:rgba(255,255,255,.12);border-radius:4px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem">⚡</div>
+            <div style="background:rgba(255,255,255,.12);border-radius:4px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem">📱</div>
+            <div style="background:rgba(255,255,255,.12);border-radius:4px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem">🎯</div>
+            <div style="background:rgba(255,255,255,.12);border-radius:4px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem">💎</div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <div class="proj-cat" style="color:var(--orange)">🎨 Diseño Gráfico</div>
+        <h3 class="proj-title">Sistema de Identidad Visual</h3>
+        <p class="proj-desc">Identidad completa: logo, paleta, tipografía, iconografía y guía de estilo para empresa del sector tecnológico.</p>
+        <div class="proj-footer">
+          <div class="proj-stack"><span class="pstag">Illustrator</span><span class="pstag">Figma</span><span class="pstag">Brand Guide</span></div>
+          <a href="#contact" class="proj-arr">↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- UX -->
+    <div class="proj-card reveal">
+      <div class="proj-visual">
+        <div class="v-ux" style="width:100%;height:100%">
+          <div style="display:flex;align-items:center;gap:.35rem;margin-bottom:.3rem">
+            <div style="width:55px;height:5px;border-radius:3px;background:#333"></div>
+            <div style="margin-left:auto;display:flex;gap:3px">
+              <div style="width:18px;height:12px;border-radius:3px;background:#ddd;border:1px solid #ccc"></div>
+              <div style="width:18px;height:12px;border-radius:3px;background:#111"></div>
+            </div>
+          </div>
+          <div class="v-ux-body">
+            <div class="v-sb">
+              <div class="v-ni act"><div class="v-nd"></div><div style="height:3px;width:32px;background:rgba(255,255,255,.4);border-radius:2px"></div></div>
+              <div class="v-ni"><div class="v-nd" style="background:#ccc"></div><div style="height:3px;width:24px;background:#ddd;border-radius:2px"></div></div>
+              <div class="v-ni"><div class="v-nd" style="background:#ccc"></div><div style="height:3px;width:28px;background:#ddd;border-radius:2px"></div></div>
+              <div class="v-ni"><div class="v-nd" style="background:#ccc"></div><div style="height:3px;width:20px;background:#ddd;border-radius:2px"></div></div>
+            </div>
+            <div class="v-ma">
+              <div class="v-f" style="height:9px;width:50%"></div>
+              <div class="v-f"></div>
+              <div class="v-f"></div>
+              <div style="height:15px;border-radius:4px;background:var(--purple);width:50px;margin-top:3px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info">
+        <div class="proj-cat" style="color:var(--purple)">✏️ UX / UI Design</div>
+        <h3 class="proj-title">Rediseño UX de Plataforma de Gestión</h3>
+        <p class="proj-desc">User research, wireframes y prototipo de alta fidelidad. Resultado: +40% retención post-lanzamiento.</p>
+        <div class="proj-footer">
+          <div class="proj-stack"><span class="pstag">Figma</span><span class="pstag">User Research</span><span class="pstag">Prototyping</span></div>
+          <a href="#contact" class="proj-arr">↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- INVENTORY — WIDE -->
+    <div class="proj-card span2 reveal">
+      <div class="proj-visual" style="background:#080C1A;height:auto;min-height:220px">
+        <div class="v-inv" style="width:100%;height:100%">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem">
+            <div style="font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.08em">🛒 INVENTARIO & VENTAS ONLINE</div>
+            <div style="padding:.15rem .55rem;border-radius:1rem;background:rgba(0,229,160,.15);color:var(--green);font-size:.58rem;font-weight:700;border:1px solid rgba(0,229,160,.3)">● LIVE</div>
+          </div>
+          <div class="v-inv-krow">
+            <div class="v-ik" style="background:rgba(0,229,160,.07);border:1px solid rgba(0,229,160,.18)">
+              <div style="font-family:'Syne',sans-serif;font-size:.9rem;color:var(--green);font-weight:800">1,284</div>
+              <div style="font-size:.46rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.05em">Productos activos</div>
+            </div>
+            <div class="v-ik" style="background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.18)">
+              <div style="font-family:'Syne',sans-serif;font-size:.9rem;color:var(--accent);font-weight:800">$38.4K</div>
+              <div style="font-size:.46rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.05em">Ventas este mes</div>
+            </div>
+            <div class="v-ik" style="background:rgba(255,107,43,.07);border:1px solid rgba(255,107,43,.18)">
+              <div style="font-family:'Syne',sans-serif;font-size:.9rem;color:var(--orange);font-weight:800">12</div>
+              <div style="font-size:.46rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.05em">Stock crítico</div>
+            </div>
+          </div>
+          <div class="v-table">
+            <div class="v-th">
+              <div class="v-th-c" style="flex:2">Producto</div>
+              <div class="v-th-c">Stock</div>
+              <div class="v-th-c">Ventas</div>
+              <div class="v-th-c">Estado</div>
+            </div>
+            <div class="v-tr"><div style="flex:2;height:4px;border-radius:2px;background:rgba(255,255,255,.15)"></div><div class="v-tc">248</div><div style="flex:1;font-size:.5rem;color:var(--green)">$12.4K</div><div class="v-dot" style="background:var(--green)"></div></div>
+            <div class="v-tr"><div style="flex:2;height:4px;border-radius:2px;background:rgba(255,255,255,.12)"></div><div class="v-tc">89</div><div style="flex:1;font-size:.5rem;color:var(--accent)">$8.1K</div><div class="v-dot" style="background:var(--accent)"></div></div>
+            <div class="v-tr"><div style="flex:2;height:4px;border-radius:2px;background:rgba(255,255,255,.08)"></div><div class="v-tc" style="color:var(--orange)">12</div><div style="flex:1;font-size:.5rem;color:rgba(255,255,255,.4)">$2.9K</div><div class="v-dot" style="background:var(--orange)"></div></div>
+            <div class="v-tr"><div style="flex:2;height:4px;border-radius:2px;background:rgba(255,255,255,.1)"></div><div class="v-tc">312</div><div style="flex:1;font-size:.5rem;color:var(--green)">$15K</div><div class="v-dot" style="background:var(--green)"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-info" style="display:flex;flex-direction:column;justify-content:center;padding:2rem">
+        <div class="proj-cat" style="color:var(--green)">🛒 Sistema Integral</div>
+        <h3 class="proj-title">Sistema de Inventario y Ventas Online</h3>
+        <p class="proj-desc">Plataforma completa para gestión de inventario en tiempo real integrada con canal de ventas online. Alertas automáticas de stock crítico, reportes de rotación, control de proveedores y dashboard con KPIs en vivo. Adaptable a cualquier tipo de negocio.</p>
+        <div class="proj-footer">
+          <div class="proj-stack"><span class="pstag">Power BI</span><span class="pstag">SQL</span><span class="pstag">Excel Auto.</span><span class="pstag">Web</span></div>
+          <a href="#contact" class="proj-arr">↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════ PROCESS ════ -->
+<section class="process-sec" id="process">
+  <div class="reveal">
+    <span class="section-label">// Proceso</span>
+    <h2 class="section-title">Cómo trabajo</h2>
+    <p class="section-sub">Un flujo claro que garantiza resultados predecibles y entregas de calidad en cada proyecto.</p>
+  </div>
+  <div class="proc-grid">
+    <div class="proc-card reveal"><div class="proc-n">01</div><div class="proc-icon">🔍</div><h4 class="proc-title">Descubrimiento</h4><p class="proc-desc">Entiendo el negocio, objetivos y usuarios. Sin atajos: primero escucho, luego construyo.</p></div>
+    <div class="proc-card reveal"><div class="proc-n">02</div><div class="proc-icon">✏️</div><h4 class="proc-title">Diseño & Estructura</h4><p class="proc-desc">Wireframes, arquitectura y prototipos que validan la solución antes de desarrollar.</p></div>
+    <div class="proc-card reveal"><div class="proc-n">03</div><div class="proc-icon">⚡</div><h4 class="proc-title">Desarrollo</h4><p class="proc-desc">Código limpio y escalable o dashboards totalmente automatizados según el proyecto.</p></div>
+    <div class="proc-card reveal"><div class="proc-n">04</div><div class="proc-icon">🚀</div><h4 class="proc-title">Entrega & Soporte</h4><p class="proc-desc">Entrego a tiempo, explico cada decisión y ofrezco soporte post-lanzamiento incluido.</p></div>
+  </div>
+</section>
+
+<!-- ════ TESTIMONIALS ════ -->
+<section class="testi-sec">
+  <div class="reveal">
+    <span class="section-label">// Testimonios</span>
+    <h2 class="section-title">Lo que dicen los clientes</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"El sistema de automatización que implementó transformó completamente nuestra operación. Procesos que tomaban días ahora son instantáneos y sin errores."</p>
+      <div class="testi-author"><div class="testi-av" style="background:#0066CC">MR</div><div><div class="testi-name">María Rodríguez</div><div class="testi-role">Directora de Operaciones</div></div></div>
+    </div>
+    <div class="testi reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Diseñó nuestra landing page y la conversión aumentó un 35% en el primer mes. Entiende tanto el diseño como el negocio — eso es muy difícil de encontrar."</p>
+      <div class="testi-author"><div class="testi-av" style="background:var(--purple)">CL</div><div><div class="testi-name">Carlos López</div><div class="testi-role">CEO · Startup SaaS</div></div></div>
+    </div>
+    <div class="testi reveal">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"La identidad visual que creó para nuestra marca superó todas las expectativas. Profesional, rápido y con criterio estético excepcional."</p>
+      <div class="testi-author"><div class="testi-av" style="background:var(--orange)">AP</div><div><div class="testi-name">Ana Pérez</div><div class="testi-role">Fundadora · Marca de Moda</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CTA / CONTACT ════ -->
+<section class="cta-sec" id="contact">
+  <div class="cta-content">
+    <span class="section-label" style="justify-content:center;display:flex">// Contacto</span>
+    <h2 class="section-title">¿Tienes un proyecto en mente?</h2>
+    <p class="cta-desc">Respondo en menos de 2 horas. Cuéntame qué necesitas y encontramos la mejor solución juntos.</p>
+    <a href="mailto:Jamaristadiaz77@gmail.com" class="btn-cta">Enviar mensaje →</a>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/jamarista77" target="_blank" rel="noopener" class="clink">
+        <span class="clink-icon">💼</span> LinkedIn
+      </a>
+      <a href="https://upwork.com/fl/johanderamarista" target="_blank" rel="noopener" class="clink">
+        <span class="clink-icon">🔗</span> Upwork
+      </a>
+      <a href="mailto:Jamaristadiaz77@gmail.com" class="clink">
+        <span class="clink-icon">📧</span> Jamaristadiaz77@gmail.com
+      </a>
+      <a href="https://wa.me/584121649600" target="_blank" rel="noopener" class="clink">
+        <span class="clink-icon">💬</span> WhatsApp +58 412 164 9600
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="foot-logo">
+    <svg width="28" height="28" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="7" fill="#111526"/><rect x="6" y="21" width="2.8" height="6.5" rx="1.4" fill="#00D4FF" opacity=".9"/><rect x="10.5" y="17" width="2.8" height="10.5" rx="1.4" fill="#7B2FFF" opacity=".9"/><rect x="15" y="13" width="2.8" height="14.5" rx="1.4" fill="#00D4FF"/><rect x="19.5" y="19" width="2.8" height="8.5" rx="1.4" fill="#7B2FFF" opacity=".7"/><rect x="24" y="15" width="2.8" height="12.5" rx="1.4" fill="#00E5A0"/><polyline points="7.4,21 11.9,17 16.4,13 20.9,19 25.4,15" stroke="#00E5A0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    <span class="foot-logo-text">DataCraft<span>.studio</span></span>
+  </div>
+  <span>© 2026 Johander Amarista · Todos los derechos reservados</span>
+  <a href="https://www.linkedin.com/in/jamarista77" target="_blank" rel="noopener" style="color:var(--muted);font-size:.78rem;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">LinkedIn: jamarista77</a>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+(function loop(){
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(loop);
+})();
+document.querySelectorAll('a,button,.svc,.proj-card,.proc-card,.testi,.hcard').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';ring.style.width='50px';ring.style.height='50px';ring.style.opacity='.2'});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';ring.style.width='32px';ring.style.height='32px';ring.style.opacity='.4'});
+});
+
+/* ── SCROLL REVEAL ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const all=[...document.querySelectorAll('.reveal')];
+      setTimeout(()=>e.target.classList.add('in'),all.indexOf(e.target)%4*80);
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+});
+</script>
+</body>
+</html>
