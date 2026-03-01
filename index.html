@@ -94,9 +94,10 @@ nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.4)}
 .hcard{background:var(--card);border:1px solid var(--border);border-radius:1.2rem;padding:1.4rem;backdrop-filter:blur(10px);transition:transform .2s,box-shadow .2s}
 .hcard:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.4)}
 .hcard.wide{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.hcard-icon{font-size:1.5rem;margin-bottom:.5rem}
-.hcard-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;line-height:1}
-.hcard-lbl{font-size:.75rem;color:var(--muted);margin-top:.25rem}
+.hcard-icon{width:32px;height:32px;border-radius:.5rem;display:flex;align-items:center;justify-content:center;margin-bottom:.75rem}
+.hcard-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.4rem;line-height:1;letter-spacing:-.03em}
+.hcard-lbl{font-size:.73rem;color:var(--muted);margin-top:.3rem;font-weight:500;letter-spacing:.02em}
+.hcard-trend{font-size:.68rem;font-weight:600;margin-top:.35rem;display:flex;align-items:center;gap:.25rem}
 .badge-list{display:flex;flex-direction:column;gap:.4rem}
 .tbadge{padding:.28rem .85rem;border-radius:1rem;font-size:.73rem;font-weight:500;border:1px solid rgba(0,212,255,.2);background:rgba(0,212,255,.08);color:var(--accent)}
 
@@ -490,51 +491,60 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
     </div>
     <!-- Mini stats shown only on mobile -->
     <div class="hero-stats-mini" style="display:none">
-      <div class="hstat">
-        <div class="hstat-num" style="color:#00D4FF">30+</div>
-        <div class="hstat-lbl">Dashboards</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-num" style="color:#7B2FFF">50+</div>
-        <div class="hstat-lbl">Proyectos diseño</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-num" style="color:#00E5A0">15+</div>
-        <div class="hstat-lbl">Sitios web</div>
-      </div>
-      <div class="hstat">
-        <div class="hstat-num" style="color:#FF6B2B">4</div>
-        <div class="hstat-lbl">Especialidades</div>
-      </div>
+      <div class="hstat"><div class="hstat-num" style="color:#00D4FF">30+</div><div class="hstat-lbl">Dashboards</div></div>
+      <div class="hstat"><div class="hstat-num" style="color:#7B2FFF">50+</div><div class="hstat-lbl">Proyectos</div></div>
+      <div class="hstat"><div class="hstat-num" style="color:#00E5A0">15+</div><div class="hstat-lbl">Sitios web</div></div>
+      <div class="hstat"><div class="hstat-num" style="color:#FF6B2B">4</div><div class="hstat-lbl">Especialidades</div></div>
     </div>
   </div>
   <div class="hero-cards">
     <div class="hero-cards-row">
       <div class="hcard">
-        <div class="hcard-icon">📊</div>
-        <div class="hcard-num" style="color:var(--accent)">30<small style="font-size:1.2rem">+</small></div>
+        <div class="hcard-icon" style="background:rgba(0,212,255,.12);border:1px solid rgba(0,212,255,.2)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="9" width="2.5" height="6" rx="1" fill="#00D4FF"/><rect x="4.5" y="6" width="2.5" height="9" rx="1" fill="#00D4FF" opacity=".7"/><rect x="8" y="3" width="2.5" height="12" rx="1" fill="#00D4FF"/><rect x="11.5" y="7" width="2.5" height="8" rx="1" fill="#00D4FF" opacity=".7"/><polyline points="2.25,9 5.75,6 9.25,3 12.75,7" stroke="#00E5A0" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+        </div>
+        <div class="hcard-num" style="color:#00D4FF">30<span style="font-size:1.4rem;font-weight:700">+</span></div>
         <div class="hcard-lbl">Dashboards entregados</div>
+        <div class="hcard-trend" style="color:#00E5A0">
+          <svg width="10" height="10" viewBox="0 0 10 10"><polyline points="1,7 4,4 7,2" stroke="#00E5A0" stroke-width="1.5" stroke-linecap="round" fill="none"/><polyline points="6,2 7,2 7,3" stroke="#00E5A0" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+          Power BI · Tableau
+        </div>
       </div>
       <div class="hcard">
-        <div class="hcard-icon">🎨</div>
-        <div class="hcard-num" style="color:var(--purple)">50<small style="font-size:1.2rem">+</small></div>
+        <div class="hcard-icon" style="background:rgba(123,47,255,.12);border:1px solid rgba(123,47,255,.2)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#7B2FFF" stroke-width="1.5" fill="none"/><path d="M5 8 Q8 4 11 8 Q8 12 5 8Z" fill="#7B2FFF" opacity=".6"/><circle cx="8" cy="8" r="2" fill="#7B2FFF"/></svg>
+        </div>
+        <div class="hcard-num" style="color:#7B2FFF">50<span style="font-size:1.4rem;font-weight:700">+</span></div>
         <div class="hcard-lbl">Proyectos de diseño</div>
+        <div class="hcard-trend" style="color:#a06bff">
+          <svg width="10" height="10" viewBox="0 0 10 10"><polyline points="1,7 4,4 7,2" stroke="#a06bff" stroke-width="1.5" stroke-linecap="round" fill="none"/><polyline points="6,2 7,2 7,3" stroke="#a06bff" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+          Branding · UX/UI
+        </div>
       </div>
       <div class="hcard">
-        <div class="hcard-icon">💻</div>
-        <div class="hcard-num" style="color:var(--green)">15<small style="font-size:1.2rem">+</small></div>
+        <div class="hcard-icon" style="background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.2)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="2" width="14" height="10" rx="2" stroke="#00E5A0" stroke-width="1.3" fill="none"/><line x1="5" y1="14" x2="11" y2="14" stroke="#00E5A0" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="12" x2="8" y2="14" stroke="#00E5A0" stroke-width="1.3" stroke-linecap="round"/><line x1="4" y1="5.5" x2="12" y2="5.5" stroke="#00E5A0" stroke-width="1" stroke-linecap="round" opacity=".5"/><line x1="4" y1="8" x2="9" y2="8" stroke="#00E5A0" stroke-width="1" stroke-linecap="round" opacity=".5"/></svg>
+        </div>
+        <div class="hcard-num" style="color:#00E5A0">15<span style="font-size:1.4rem;font-weight:700">+</span></div>
         <div class="hcard-lbl">Sitios web creados</div>
+        <div class="hcard-trend" style="color:#00E5A0">
+          <svg width="10" height="10" viewBox="0 0 10 10"><polyline points="1,7 4,4 7,2" stroke="#00E5A0" stroke-width="1.5" stroke-linecap="round" fill="none"/><polyline points="6,2 7,2 7,3" stroke="#00E5A0" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+          HTML · JS · React
+        </div>
       </div>
       <div class="hcard">
-        <div class="hcard-icon">⚡</div>
-        <div class="hcard-num" style="color:var(--orange)">4</div>
+        <div class="hcard-icon" style="background:rgba(255,107,43,.1);border:1px solid rgba(255,107,43,.2)">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L10 6H14L11 9L12.5 13L8 10.5L3.5 13L5 9L2 6H6Z" stroke="#FF6B2B" stroke-width="1.3" stroke-linejoin="round" fill="rgba(255,107,43,.2)"/></svg>
+        </div>
+        <div class="hcard-num" style="color:#FF6B2B">4</div>
         <div class="hcard-lbl">Especialidades</div>
+        <div class="hcard-trend" style="color:#FF6B2B">Datos · UX · Web · Diseño</div>
       </div>
     </div>
     <div class="hcard wide">
       <div>
-        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;color:var(--accent);margin-bottom:.25rem">Stack completo</div>
-        <div style="font-size:.75rem;color:var(--muted)">Herramientas & tecnologías</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:.88rem;color:var(--white);margin-bottom:.2rem;letter-spacing:-.01em">Stack tecnológico</div>
+        <div style="font-size:.72rem;color:var(--muted)">Herramientas que domino</div>
       </div>
       <div class="badge-list">
         <span class="tbadge">Power BI · DAX · SQL</span>
@@ -684,29 +694,114 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
 
     <!-- Dashboard -->
     <div class="proj-card reveal">
-      <div class="proj-visual" style="background:#080C1A">
-        <div class="v-dash" style="width:100%;height:100%;padding:.9rem;display:flex;flex-direction:column;gap:.45rem">
-          <div class="v-krow">
-            <div class="v-k"><div class="v-kn" style="color:var(--accent)">$48K</div><div class="v-kl">Revenue</div></div>
-            <div class="v-k"><div class="v-kn">2,840</div><div class="v-kl">Users</div></div>
-            <div class="v-k"><div class="v-kn" style="color:var(--green)">3.7%</div><div class="v-kl">Conv.</div></div>
+      <div class="proj-visual" style="background:#06091A;height:240px">
+        <div style="width:100%;height:100%;padding:.85rem;display:flex;flex-direction:column;gap:.5rem;font-family:'DM Sans',sans-serif">
+          <!-- topbar -->
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-family:'Syne',sans-serif;font-size:.6rem;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.08em">MARKETING ANALYTICS DASHBOARD</span>
+            <span style="padding:.1rem .5rem;border-radius:.4rem;background:rgba(0,229,160,.15);color:#00E5A0;font-size:.52rem;font-weight:700;border:1px solid rgba(0,229,160,.25)">LIVE ●</span>
           </div>
-          <div class="v-brow" style="flex:1">
-            <div class="v-bc">
-              <div class="v-bv" style="height:42%;background:#0066FF;opacity:.8"></div>
-              <div class="v-bv" style="height:68%;background:#0066FF;opacity:.8"></div>
-              <div class="v-bv" style="height:48%;background:#0066FF;opacity:.8"></div>
-              <div class="v-bv" style="height:82%;background:var(--purple)"></div>
-              <div class="v-bv" style="height:62%;background:#0066FF;opacity:.8"></div>
-              <div class="v-bv" style="height:90%;background:var(--accent)"></div>
-              <div class="v-bv" style="height:72%;background:#0066FF;opacity:.8"></div>
+          <!-- KPI row -->
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem">
+            <div style="background:rgba(0,212,255,.07);border:1px solid rgba(0,212,255,.15);border-radius:.5rem;padding:.45rem">
+              <div style="font-size:.44rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem">Revenue MoM</div>
+              <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#00D4FF">$48.2K</div>
+              <div style="font-size:.5rem;color:#00E5A0;margin-top:.15rem">▲ 12.4%</div>
             </div>
-            <div class="v-dc">
-              <svg width="44" height="44" viewBox="0 0 44 44">
-                <circle cx="22" cy="22" r="16" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="7"/>
-                <circle cx="22" cy="22" r="16" fill="none" stroke="#00D4FF" stroke-width="7" stroke-dasharray="60 41" stroke-dashoffset="0" stroke-linecap="round"/>
-                <circle cx="22" cy="22" r="16" fill="none" stroke="#7B2FFF" stroke-width="7" stroke-dasharray="30 71" stroke-dashoffset="-60" stroke-linecap="round"/>
-              </svg>
+            <div style="background:rgba(123,47,255,.07);border:1px solid rgba(123,47,255,.15);border-radius:.5rem;padding:.45rem">
+              <div style="font-size:.44rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem">Sesiones</div>
+              <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#fff">28,419</div>
+              <div style="font-size:.5rem;color:#a06bff;margin-top:.15rem">▲ 8.7%</div>
+            </div>
+            <div style="background:rgba(0,229,160,.06);border:1px solid rgba(0,229,160,.15);border-radius:.5rem;padding:.45rem">
+              <div style="font-size:.44rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem">Conv. Rate</div>
+              <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#00E5A0">3.74%</div>
+              <div style="font-size:.5rem;color:#00E5A0;margin-top:.15rem">▲ 0.6 pts</div>
+            </div>
+            <div style="background:rgba(255,107,43,.06);border:1px solid rgba(255,107,43,.15);border-radius:.5rem;padding:.45rem">
+              <div style="font-size:.44rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem">CAC</div>
+              <div style="font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#fff">$14.8</div>
+              <div style="font-size:.5rem;color:#FF6B2B;margin-top:.15rem">▼ -3.2%</div>
+            </div>
+          </div>
+          <!-- chart + funnel -->
+          <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:.4rem;flex:1">
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:.5rem;padding:.5rem">
+              <div style="font-size:.46rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.45rem">Revenue por Canal — Últimas 8 semanas</div>
+              <div style="display:flex;align-items:flex-end;gap:3px;height:52px">
+                <div style="flex:1;display:flex;flex-direction:column;gap:1px;align-items:center">
+                  <div style="width:100%;height:38%;background:#0066FF;border-radius:2px 2px 0 0;opacity:.7"></div>
+                  <div style="width:100%;height:25%;background:#7B2FFF;opacity:.8"></div>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:1px;align-items:center">
+                  <div style="width:100%;height:55%;background:#0066FF;border-radius:2px 2px 0 0;opacity:.7"></div>
+                  <div style="width:100%;height:30%;background:#7B2FFF;opacity:.8"></div>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:1px;align-items:center">
+                  <div style="width:100%;height:42%;background:#0066FF;border-radius:2px 2px 0 0;opacity:.7"></div>
+                  <div style="width:100%;height:22%;background:#7B2FFF;opacity:.8"></div>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:1px;align-items:center">
+                  <div style="width:100%;height:70%;background:#0066FF;border-radius:2px 2px 0 0"></div>
+                  <div style="width:100%;height:35%;background:#7B2FFF"></div>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:1px;align-items:center">
+                  <div style="width:100%;height:60%;background:#0066FF;border-radius:2px 2px 0 0;opacity:.7"></div>
+                  <div style="width:100%;height:28%;background:#7B2FFF;opacity:.8"></div>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:1px;align-items:center">
+                  <div style="width:100%;height:80%;background:#00D4FF;border-radius:2px 2px 0 0"></div>
+                  <div style="width:100%;height:38%;background:#7B2FFF"></div>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:1px;align-items:center">
+                  <div style="width:100%;height:68%;background:#0066FF;border-radius:2px 2px 0 0;opacity:.8"></div>
+                  <div style="width:100%;height:32%;background:#7B2FFF;opacity:.9"></div>
+                </div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:1px;align-items:center">
+                  <div style="width:100%;height:90%;background:#00D4FF;border-radius:2px 2px 0 0"></div>
+                  <div style="width:100%;height:42%;background:#7B2FFF"></div>
+                </div>
+              </div>
+              <div style="display:flex;gap:.6rem;margin-top:.35rem">
+                <div style="display:flex;align-items:center;gap:.25rem"><div style="width:7px;height:4px;border-radius:1px;background:#0066FF"></div><span style="font-size:.44rem;color:rgba(255,255,255,.4)">Orgánico</span></div>
+                <div style="display:flex;align-items:center;gap:.25rem"><div style="width:7px;height:4px;border-radius:1px;background:#7B2FFF"></div><span style="font-size:.44rem;color:rgba(255,255,255,.4)">Paid</span></div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.4rem">
+              <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:.5rem;padding:.5rem;flex:1">
+                <div style="font-size:.44rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem">Funnel de Conversión</div>
+                <div style="display:flex;flex-direction:column;gap:.25rem">
+                  <div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:.15rem"><span style="font-size:.46rem;color:rgba(255,255,255,.5)">Visitas</span><span style="font-size:.46rem;color:#00D4FF;font-weight:700">28.4K</span></div>
+                    <div style="height:4px;border-radius:2px;background:rgba(255,255,255,.08)"><div style="width:100%;height:100%;background:#00D4FF;border-radius:2px"></div></div>
+                  </div>
+                  <div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:.15rem"><span style="font-size:.46rem;color:rgba(255,255,255,.5)">Leads</span><span style="font-size:.46rem;color:#7B2FFF;font-weight:700">5.1K</span></div>
+                    <div style="height:4px;border-radius:2px;background:rgba(255,255,255,.08)"><div style="width:67%;height:100%;background:#7B2FFF;border-radius:2px"></div></div>
+                  </div>
+                  <div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:.15rem"><span style="font-size:.46rem;color:rgba(255,255,255,.5)">Clientes</span><span style="font-size:.46rem;color:#00E5A0;font-weight:700">1,062</span></div>
+                    <div style="height:4px;border-radius:2px;background:rgba(255,255,255,.08)"><div style="width:37%;height:100%;background:#00E5A0;border-radius:2px"></div></div>
+                  </div>
+                </div>
+              </div>
+              <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:.5rem;padding:.45rem">
+                <div style="font-size:.44rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">Top Campañas</div>
+                <div style="display:flex;flex-direction:column;gap:.2rem">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:.46rem;color:rgba(255,255,255,.6)">Google Ads</span>
+                    <span style="font-size:.46rem;color:#00E5A0;font-weight:700">ROAS 4.2x</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:.46rem;color:rgba(255,255,255,.6)">Meta Ads</span>
+                    <span style="font-size:.46rem;color:#a06bff;font-weight:700">ROAS 3.1x</span>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <span style="font-size:.46rem;color:rgba(255,255,255,.6)">Email Mkt</span>
+                    <span style="font-size:.46rem;color:#00D4FF;font-weight:700">Open 38%</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -724,16 +819,61 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
 
     <!-- Web -->
     <div class="proj-card reveal">
-      <div class="proj-visual">
-        <div class="v-web" style="width:100%;height:100%">
-          <div class="v-nav">
-            <div class="v-nav-logo"></div>
-            <div class="v-nav-lk"><div class="v-nav-l"></div><div class="v-nav-l"></div><div class="v-nav-cta"></div></div>
+      <div class="proj-visual" style="background:#0D1117;height:240px;overflow:hidden">
+        <div style="width:100%;height:100%;display:flex;flex-direction:column;transform:scale(.95);transform-origin:top center">
+          <!-- browser bar -->
+          <div style="background:#161B22;border-bottom:1px solid rgba(255,255,255,.08);padding:.35rem .6rem;display:flex;align-items:center;gap:.4rem;flex-shrink:0">
+            <div style="display:flex;gap:.25rem"><div style="width:6px;height:6px;border-radius:50%;background:#FF5F57"></div><div style="width:6px;height:6px;border-radius:50%;background:#FEBC2E"></div><div style="width:6px;height:6px;border-radius:50%;background:#28C840"></div></div>
+            <div style="flex:1;background:rgba(255,255,255,.06);border-radius:.4rem;height:14px;display:flex;align-items:center;padding:0 .4rem;margin:0 .3rem">
+              <span style="font-size:.42rem;color:rgba(255,255,255,.3)">https://nexusapp.io</span>
+            </div>
           </div>
-          <div class="v-main">
-            <div style="width:65%;height:9px;border-radius:4px;background:rgba(255,255,255,.7)"></div>
-            <div style="width:48%;height:7px;border-radius:3px;background:rgba(255,255,255,.35)"></div>
-            <div style="width:50px;height:13px;border-radius:6px;background:var(--purple)"></div>
+          <!-- page content -->
+          <div style="flex:1;overflow:hidden;background:linear-gradient(160deg,#0A0A14 0%,#0D0D20 100%);display:flex;flex-direction:column">
+            <!-- nav -->
+            <div style="padding:.4rem .8rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.05)">
+              <div style="font-family:'Syne',sans-serif;font-size:.6rem;font-weight:800;color:#fff">NEXUS<span style="color:#7B2FFF">.</span></div>
+              <div style="display:flex;gap:.5rem;align-items:center">
+                <div style="width:18px;height:3px;border-radius:2px;background:rgba(255,255,255,.25)"></div>
+                <div style="width:18px;height:3px;border-radius:2px;background:rgba(255,255,255,.25)"></div>
+                <div style="width:18px;height:3px;border-radius:2px;background:rgba(255,255,255,.25)"></div>
+                <div style="background:#7B2FFF;padding:.15rem .5rem;border-radius:.4rem"><span style="font-size:.44rem;color:#fff;font-weight:600">Acceder</span></div>
+              </div>
+            </div>
+            <!-- hero -->
+            <div style="flex:1;display:flex;align-items:center;justify-content:space-between;padding:.6rem .8rem;gap:.6rem">
+              <div style="flex:1;display:flex;flex-direction:column;gap:.35rem">
+                <div style="display:inline-flex;align-items:center;gap:.3rem;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);border-radius:1rem;padding:.15rem .5rem;width:fit-content">
+                  <div style="width:4px;height:4px;border-radius:50%;background:#00E5A0"></div>
+                  <span style="font-size:.42rem;color:#00D4FF;font-weight:600;letter-spacing:.06em">NUEVO · v2.0 lanzado</span>
+                </div>
+                <div style="font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;color:#fff;line-height:1.1">Convierte visitantes<br>en <span style="color:#7B2FFF">clientes</span></div>
+                <div style="font-size:.48rem;color:rgba(255,255,255,.4);line-height:1.5">La plataforma que duplica tu tasa de conversión con IA y diseño centrado en el usuario.</div>
+                <div style="display:flex;gap:.35rem;margin-top:.1rem">
+                  <div style="background:#7B2FFF;padding:.3rem .7rem;border-radius:.4rem"><span style="font-size:.5rem;color:#fff;font-weight:600">Empezar gratis</span></div>
+                  <div style="border:1px solid rgba(255,255,255,.15);padding:.3rem .7rem;border-radius:.4rem"><span style="font-size:.5rem;color:rgba(255,255,255,.6)">Ver demo</span></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:.4rem;margin-top:.15rem">
+                  <div style="display:flex"><img src="https://i.pravatar.cc/16?img=3" style="width:14px;height:14px;border-radius:50%;border:1px solid #7B2FFF;margin-right:-4px;object-fit:cover"/><img src="https://i.pravatar.cc/16?img=8" style="width:14px;height:14px;border-radius:50%;border:1px solid #7B2FFF;margin-right:-4px;object-fit:cover"/><img src="https://i.pravatar.cc/16?img=15" style="width:14px;height:14px;border-radius:50%;border:1px solid #7B2FFF;object-fit:cover"/></div>
+                  <span style="font-size:.42rem;color:rgba(255,255,255,.4)">+2,400 empresas activas</span>
+                </div>
+              </div>
+              <!-- dashboard preview inside page -->
+              <div style="width:45%;background:#0F1525;border-radius:.5rem;border:1px solid rgba(255,255,255,.08);padding:.45rem;flex-shrink:0">
+                <div style="display:flex;gap:.3rem;margin-bottom:.35rem">
+                  <div style="flex:1;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.12);border-radius:.3rem;padding:.3rem"><div style="font-family:'Syne',sans-serif;font-size:.6rem;color:#00D4FF;font-weight:800">94%</div><div style="font-size:.38rem;color:rgba(255,255,255,.3)">Satisfacción</div></div>
+                  <div style="flex:1;background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.12);border-radius:.3rem;padding:.3rem"><div style="font-family:'Syne',sans-serif;font-size:.6rem;color:#00E5A0;font-weight:800">+35%</div><div style="font-size:.38rem;color:rgba(255,255,255,.3)">Conversión</div></div>
+                </div>
+                <div style="height:28px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:.3rem;display:flex;align-items:flex-end;padding:.2rem .25rem;gap:2px">
+                  <div style="flex:1;height:40%;background:#0066FF;border-radius:1px;opacity:.7"></div>
+                  <div style="flex:1;height:65%;background:#0066FF;border-radius:1px;opacity:.7"></div>
+                  <div style="flex:1;height:50%;background:#0066FF;border-radius:1px;opacity:.7"></div>
+                  <div style="flex:1;height:80%;background:#7B2FFF;border-radius:1px"></div>
+                  <div style="flex:1;height:60%;background:#0066FF;border-radius:1px;opacity:.7"></div>
+                  <div style="flex:1;height:90%;background:#00D4FF;border-radius:1px"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -750,25 +890,60 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
 
     <!-- Brand -->
     <div class="proj-card reveal">
-      <div class="proj-visual" style="background:#0A0A14">
-        <div class="v-brand" style="width:100%;height:100%">
-          <div class="v-logo-box"><div class="v-logo-txt">NEXUS™</div></div>
-          <div class="v-pal">
-            <div class="v-sw" style="background:var(--purple)"></div>
-            <div class="v-sw" style="background:var(--accent)"></div>
-            <div class="v-sw" style="background:var(--green)"></div>
-            <div class="v-sw" style="background:var(--orange)"></div>
+      <div class="proj-visual" style="background:#0A0A14;height:240px">
+        <div style="width:100%;height:100%;padding:.8rem;display:flex;flex-direction:column;gap:.5rem">
+          <!-- brand header -->
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-size:.5rem;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.1em">Brand Identity System</span>
+            <span style="font-size:.48rem;color:#7B2FFF;border:1px solid rgba(123,47,255,.3);border-radius:.3rem;padding:.1rem .4rem">v1.0</span>
           </div>
-          <div class="v-typebox">
-            <div class="v-tln" style="width:80%;height:6px"></div>
-            <div class="v-tln" style="width:58%"></div>
-            <div class="v-tln" style="width:70%"></div>
+          <!-- logo showcase -->
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:.6rem;padding:.7rem;display:flex;align-items:center;justify-content:space-between;gap:.5rem">
+            <div style="display:flex;align-items:center;gap:.4rem">
+              <div style="width:28px;height:28px;background:#7B2FFF;border-radius:.4rem;display:flex;align-items:center;justify-content:center">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13 L8 3 L13 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="5" y1="9.5" x2="11" y2="9.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <div style="font-family:'Syne',sans-serif;font-size:.78rem;font-weight:800;color:#fff;letter-spacing:-.01em">NEXUS</div>
+                <div style="font-size:.42rem;color:rgba(255,255,255,.3);letter-spacing:.08em">SOLUTIONS</div>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:.25rem">
+              <div style="font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;color:#7B2FFF">NEXUS</div>
+              <div style="font-size:.7rem;font-weight:300;color:rgba(255,255,255,.5);letter-spacing:.12em">NEXUS</div>
+            </div>
           </div>
-          <div style="background:rgba(255,255,255,.04);border-radius:7px;padding:.4rem;display:grid;grid-template-columns:1fr 1fr;gap:3px">
-            <div style="background:rgba(255,255,255,.12);border-radius:4px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem">⚡</div>
-            <div style="background:rgba(255,255,255,.12);border-radius:4px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem">📱</div>
-            <div style="background:rgba(255,255,255,.12);border-radius:4px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem">🎯</div>
-            <div style="background:rgba(255,255,255,.12);border-radius:4px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.65rem">💎</div>
+          <!-- palette + type -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem">
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:.6rem;padding:.5rem">
+              <div style="font-size:.42rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem">Color Palette</div>
+              <div style="display:flex;gap:.25rem;height:22px">
+                <div style="flex:2;background:#7B2FFF;border-radius:.3rem"></div>
+                <div style="flex:1.5;background:#00D4FF;border-radius:.3rem"></div>
+                <div style="flex:1;background:#0A0A14;border:1px solid rgba(255,255,255,.1);border-radius:.3rem"></div>
+                <div style="flex:1;background:#F4F0EA;border-radius:.3rem"></div>
+              </div>
+              <div style="display:flex;gap:.25rem;margin-top:.25rem">
+                <div style="flex:2"><span style="font-size:.38rem;color:rgba(255,255,255,.35)">#7B2FFF</span></div>
+                <div style="flex:1.5"><span style="font-size:.38rem;color:rgba(255,255,255,.35)">#00D4FF</span></div>
+              </div>
+            </div>
+            <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:.6rem;padding:.5rem">
+              <div style="font-size:.42rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem">Typography</div>
+              <div style="font-family:'Syne',sans-serif;font-size:.85rem;font-weight:800;color:#fff;line-height:1">Aa</div>
+              <div style="font-size:.6rem;font-weight:800;color:#7B2FFF;font-family:'Syne',sans-serif">SYNE</div>
+              <div style="margin-top:.2rem">
+                <div style="height:3px;border-radius:1px;background:rgba(255,255,255,.5);width:90%"></div>
+                <div style="height:2px;border-radius:1px;background:rgba(255,255,255,.25);width:70%;margin-top:.2rem"></div>
+                <div style="height:2px;border-radius:1px;background:rgba(255,255,255,.15);width:55%;margin-top:.15rem"></div>
+              </div>
+            </div>
+          </div>
+          <!-- applications -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem">
+            <div style="background:#7B2FFF;border-radius:.4rem;height:22px;display:flex;align-items:center;justify-content:center"><span style="font-size:.44rem;color:#fff;font-weight:700">Business Card</span></div>
+            <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:.4rem;height:22px;display:flex;align-items:center;justify-content:center"><span style="font-size:.44rem;color:rgba(255,255,255,.6)">Letterhead</span></div>
+            <div style="background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);border-radius:.4rem;height:22px;display:flex;align-items:center;justify-content:center"><span style="font-size:.44rem;color:#00D4FF">Digital Kit</span></div>
           </div>
         </div>
       </div>
@@ -785,27 +960,81 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
 
     <!-- UX -->
     <div class="proj-card reveal">
-      <div class="proj-visual">
-        <div class="v-ux" style="width:100%;height:100%">
-          <div style="display:flex;align-items:center;gap:.35rem;margin-bottom:.3rem">
-            <div style="width:55px;height:5px;border-radius:3px;background:#333"></div>
-            <div style="margin-left:auto;display:flex;gap:3px">
-              <div style="width:18px;height:12px;border-radius:3px;background:#ddd;border:1px solid #ccc"></div>
-              <div style="width:18px;height:12px;border-radius:3px;background:#111"></div>
+      <div class="proj-visual" style="background:#F0EBE3;height:240px">
+        <div style="width:100%;height:100%;display:flex;flex-direction:column;font-family:'DM Sans',sans-serif">
+          <!-- Figma-like toolbar -->
+          <div style="background:#1E1E1E;height:26px;display:flex;align-items:center;padding:0 .6rem;gap:.5rem;flex-shrink:0">
+            <div style="display:flex;gap:.25rem">
+              <div style="width:8px;height:8px;border-radius:50%;background:#FF5F57"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#FEBC2E"></div>
+              <div style="width:8px;height:8px;border-radius:50%;background:#28C840"></div>
             </div>
+            <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:.8rem">
+              <span style="font-size:.46rem;color:rgba(255,255,255,.4);font-weight:600">Frame</span>
+              <span style="font-size:.46rem;color:#fff;font-weight:700;background:rgba(123,47,255,.4);padding:.1rem .35rem;border-radius:.2rem">Prototype</span>
+              <span style="font-size:.46rem;color:rgba(255,255,255,.4)">Inspect</span>
+            </div>
+            <div style="background:#7B2FFF;border-radius:.3rem;padding:.15rem .4rem"><span style="font-size:.44rem;color:#fff;font-weight:700">▶ Play</span></div>
           </div>
-          <div class="v-ux-body">
-            <div class="v-sb">
-              <div class="v-ni act"><div class="v-nd"></div><div style="height:3px;width:32px;background:rgba(255,255,255,.4);border-radius:2px"></div></div>
-              <div class="v-ni"><div class="v-nd" style="background:#ccc"></div><div style="height:3px;width:24px;background:#ddd;border-radius:2px"></div></div>
-              <div class="v-ni"><div class="v-nd" style="background:#ccc"></div><div style="height:3px;width:28px;background:#ddd;border-radius:2px"></div></div>
-              <div class="v-ni"><div class="v-nd" style="background:#ccc"></div><div style="height:3px;width:20px;background:#ddd;border-radius:2px"></div></div>
+          <!-- design canvas -->
+          <div style="flex:1;display:grid;grid-template-columns:100px 1fr;overflow:hidden">
+            <!-- layers panel -->
+            <div style="background:#1E1E1E;border-right:1px solid rgba(255,255,255,.08);padding:.4rem .35rem;display:flex;flex-direction:column;gap:.2rem">
+              <div style="font-size:.4rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2rem">Layers</div>
+              <div style="display:flex;align-items:center;gap:.25rem;padding:.2rem .3rem;border-radius:.25rem;background:rgba(123,47,255,.3)">
+                <svg width="7" height="7" viewBox="0 0 7 7" fill="none"><rect x=".5" y=".5" width="6" height="6" rx="1" stroke="#a06bff" stroke-width=".8"/></svg>
+                <span style="font-size:.42rem;color:#fff">Dashboard</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.25rem;padding:.2rem .3rem;padding-left:.6rem">
+                <svg width="6" height="6" viewBox="0 0 6 6" fill="none"><rect x=".5" y=".5" width="5" height="5" rx=".8" stroke="rgba(255,255,255,.3)" stroke-width=".7"/></svg>
+                <span style="font-size:.4rem;color:rgba(255,255,255,.4)">Header</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.25rem;padding:.2rem .3rem;padding-left:.6rem">
+                <svg width="6" height="6" viewBox="0 0 6 6" fill="none"><rect x=".5" y=".5" width="5" height="5" rx=".8" stroke="rgba(255,255,255,.3)" stroke-width=".7"/></svg>
+                <span style="font-size:.4rem;color:rgba(255,255,255,.4)">KPI Cards</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.25rem;padding:.2rem .3rem;padding-left:.6rem">
+                <svg width="6" height="6" viewBox="0 0 6 6" fill="none"><rect x=".5" y=".5" width="5" height="5" rx=".8" stroke="rgba(255,255,255,.3)" stroke-width=".7"/></svg>
+                <span style="font-size:.4rem;color:rgba(255,255,255,.4)">Chart Area</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.25rem;padding:.2rem .3rem;padding-left:.6rem">
+                <svg width="6" height="6" viewBox="0 0 6 6" fill="none"><rect x=".5" y=".5" width="5" height="5" rx=".8" stroke="#7B2FFF" stroke-width=".7"/></svg>
+                <span style="font-size:.4rem;color:#a06bff">Data Table</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:.25rem;padding:.2rem .3rem;padding-left:.6rem">
+                <svg width="6" height="6" viewBox="0 0 6 6" fill="none"><rect x=".5" y=".5" width="5" height="5" rx=".8" stroke="rgba(255,255,255,.3)" stroke-width=".7"/></svg>
+                <span style="font-size:.4rem;color:rgba(255,255,255,.4)">Sidebar</span>
+              </div>
             </div>
-            <div class="v-ma">
-              <div class="v-f" style="height:9px;width:50%"></div>
-              <div class="v-f"></div>
-              <div class="v-f"></div>
-              <div style="height:15px;border-radius:4px;background:var(--purple);width:50px;margin-top:3px"></div>
+            <!-- prototype preview -->
+            <div style="background:#2C2C2C;display:flex;align-items:center;justify-content:center;position:relative">
+              <!-- mini device frame -->
+              <div style="background:#fff;border-radius:.5rem;border:2px solid #444;width:75%;height:82%;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.5)">
+                <div style="background:#7B2FFF;height:20px;display:flex;align-items:center;padding:0 .5rem;justify-content:space-between">
+                  <span style="font-family:'Syne',sans-serif;font-size:.48rem;font-weight:800;color:#fff">Analytics Pro</span>
+                  <div style="display:flex;gap:.2rem">
+                    <div style="width:14px;height:10px;border-radius:.2rem;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center"><span style="font-size:.38rem;color:#fff">+40%</span></div>
+                  </div>
+                </div>
+                <div style="padding:.35rem;display:flex;flex-direction:column;gap:.25rem">
+                  <div style="display:flex;gap:.25rem">
+                    <div style="flex:1;background:#F4F0FA;border-radius:.3rem;border:1px solid #e0d8f0;padding:.3rem"><div style="font-family:'Syne',sans-serif;font-size:.55rem;font-weight:800;color:#7B2FFF">98%</div><div style="font-size:.38rem;color:#888">Retención</div></div>
+                    <div style="flex:1;background:#F0FAF7;border-radius:.3rem;border:1px solid #c8efdf;padding:.3rem"><div style="font-family:'Syne',sans-serif;font-size:.55rem;font-weight:800;color:#00956A">+40%</div><div style="font-size:.38rem;color:#888">Engagement</div></div>
+                    <div style="flex:1;background:#F0F8FF;border-radius:.3rem;border:1px solid #c8e0f4;padding:.3rem"><div style="font-family:'Syne',sans-serif;font-size:.55rem;font-weight:800;color:#0066CC">4.8★</div><div style="font-size:.38rem;color:#888">Rating</div></div>
+                  </div>
+                  <div style="background:#F8F8F8;border-radius:.3rem;height:30px;border:1px solid #eee;display:flex;align-items:flex-end;padding:.25rem;gap:2px">
+                    <div style="flex:1;height:40%;background:#7B2FFF;border-radius:1px;opacity:.5"></div>
+                    <div style="flex:1;height:65%;background:#7B2FFF;border-radius:1px;opacity:.6"></div>
+                    <div style="flex:1;height:50%;background:#7B2FFF;border-radius:1px;opacity:.5"></div>
+                    <div style="flex:1;height:80%;background:#7B2FFF;border-radius:1px"></div>
+                    <div style="flex:1;height:60%;background:#7B2FFF;border-radius:1px;opacity:.6"></div>
+                    <div style="flex:1;height:95%;background:#00D4FF;border-radius:1px"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- hotspot indicators -->
+              <div style="position:absolute;top:20%;left:15%;width:10px;height:10px;border:2px solid #7B2FFF;border-radius:50%;background:rgba(123,47,255,.2)"></div>
+              <div style="position:absolute;bottom:25%;right:12%;width:8px;height:8px;border:2px solid #00D4FF;border-radius:50%;background:rgba(0,212,255,.2)"></div>
             </div>
           </div>
         </div>
@@ -896,17 +1125,26 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
     <div class="testi reveal">
       <div class="testi-stars">★★★★★</div>
       <p class="testi-text">"El sistema de automatización que implementó transformó completamente nuestra operación. Procesos que tomaban días ahora son instantáneos y sin errores."</p>
-      <div class="testi-author"><div class="testi-av" style="background:#0066CC">MR</div><div><div class="testi-name">María Rodríguez</div><div class="testi-role">Directora de Operaciones</div></div></div>
+      <div class="testi-author">
+        <img src="https://i.pravatar.cc/56?img=47" alt="María Rodríguez" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,212,255,.3);flex-shrink:0"/>
+        <div><div class="testi-name">María Rodríguez</div><div class="testi-role">Directora de Operaciones</div></div>
+      </div>
     </div>
     <div class="testi reveal">
       <div class="testi-stars">★★★★★</div>
       <p class="testi-text">"Diseñó nuestra landing page y la conversión aumentó un 35% en el primer mes. Entiende tanto el diseño como el negocio — eso es muy difícil de encontrar."</p>
-      <div class="testi-author"><div class="testi-av" style="background:var(--purple)">CL</div><div><div class="testi-name">Carlos López</div><div class="testi-role">CEO · Startup SaaS</div></div></div>
+      <div class="testi-author">
+        <img src="https://i.pravatar.cc/56?img=12" alt="Carlos López" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(123,47,255,.3);flex-shrink:0"/>
+        <div><div class="testi-name">Carlos López</div><div class="testi-role">CEO · Startup SaaS</div></div>
+      </div>
     </div>
     <div class="testi reveal">
       <div class="testi-stars">★★★★★</div>
       <p class="testi-text">"La identidad visual que creó para nuestra marca superó todas las expectativas. Profesional, rápido y con criterio estético excepcional."</p>
-      <div class="testi-author"><div class="testi-av" style="background:var(--orange)">AP</div><div><div class="testi-name">Ana Pérez</div><div class="testi-role">Fundadora · Marca de Moda</div></div></div>
+      <div class="testi-author">
+        <img src="https://i.pravatar.cc/56?img=32" alt="Ana Pérez" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,107,43,.3);flex-shrink:0"/>
+        <div><div class="testi-name">Ana Pérez</div><div class="testi-role">Fundadora · Marca de Moda</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -917,17 +1155,15 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 3r
     <span class="section-label" style="justify-content:center;display:flex">// Contacto</span>
     <h2 class="section-title">¿Tienes un proyecto en mente?</h2>
     <p class="cta-desc">Respondo en menos de 2 horas. Cuéntame qué necesitas y encontramos la mejor solución juntos.</p>
-    <a href="/cdn-cgi/l/email-protection#7d371c101c0f140e091c19141c074a4a3d1a101c1411531e1210" class="btn-cta">Enviar mensaje →</a>
+    <a href="mailto:Jamaristadiaz77@gmail.com" class="btn-cta">Enviar mensaje →</a>
     <div class="contact-links">
       <a href="https://www.linkedin.com/in/jamarista77" target="_blank" rel="noopener" class="clink">
         <span class="clink-icon">💼</span> LinkedIn
       </a>
-      <a href="https://upwork.com/fl/johanderamarista" target="_blank" rel="noopener" class="clink">
+      <a href="https://www.upwork.com/freelancers/~012d562cd391b4c01f?mp_source=share" target="_blank" rel="noopener" class="clink">
         <span class="clink-icon">🔗</span> Upwork
       </a>
-      <a href="/cdn-cgi/l/email-protection#367c575b57445f454257525f574c010176515b575f5a1855595b" class="clink">
-        <span class="clink-icon">📧</span> <span class="__cf_email__" data-cfemail="713b101c1003180205101518100b464631161c10181d5f121e1c">[email&#160;protected]</span>
-      </a>
+      <a href="mailto:Jamaristadiaz77@gmail.com" class="clink"><span class="clink-icon">✉</span> Jamaristadiaz77@gmail.com</a>
       <a href="https://wa.me/584121649600" target="_blank" rel="noopener" class="clink">
         <span class="clink-icon">💬</span> WhatsApp +58 412 164 9600
       </a>
@@ -991,8 +1227,6 @@ const io=new IntersectionObserver(entries=>{
   });
 },{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-/* ── NAV SCROLL ── */
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
 });
